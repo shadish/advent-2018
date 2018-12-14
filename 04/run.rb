@@ -29,10 +29,16 @@ input.each_with_index do |v,i|
 	end
 end
 
+#part 1
 results = guards.map{ |k,v|
 	max = v.max
 	sum = v.reduce{|a,b| a+b}
-	{:id => k, :sum => sum, :minute => v.find_index(max)}
+	{:id => k, :max => max, :sum => sum, :minute => v.find_index(max)}
 }.sort {|a,b| a[:sum] <=> b[:sum] }.reverse
 
+puts results.first[:id] * results.first[:minute]
+
+#part 2
+
+results = results.sort {|a,b| a[:max] <=> b[:max] }.reverse 
 puts results.first[:id] * results.first[:minute]
